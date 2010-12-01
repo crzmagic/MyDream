@@ -1,0 +1,38 @@
+<%= render :partial => 'menu' %>
+  <DIV class="clear pdgTopLg"><!-- --></DIV></DIV>
+  <DIV class=clearfix id=blogEntries>
+  <% for topic in @topics %>
+    <DL class="dlSite dlGrid">
+    <DD class=thumbnail><A
+    style="BACKGROUND-IMAGE: url(<%= topic.image %>)"
+    href="http://www.stumbleupon.com/to/4Ks9Fa/www.whylinuxisbetter.net/t:4a62c6e1e0795;src:user;nature:thumbnail-0;topic:234"><IMG
+    src="/images/s.gif"></A><A
+    class=sharethis style="DISPLAY: none"
+    href="http://mymy828.stumbleupon.com/toolbar/sidepanel.php?url=http%3A%2F%2Fwww.whylinuxisbetter.net%2F">Share
+    This</A>
+    <DT class=textDisabled>
+    <A href="http://www.stumbleupon.com/to/4Ks9Fa/www.whylinuxisbetter.net/t:4a62c6e1e0795;src:user;topic:234">
+    <%= topic.desc %></A>
+    </DT>
+    <DD class=stats>
+    <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+      <TBODY>
+      <TR>
+        <TD class=textUncolor><A
+          href="http://www.stumbleupon.com/url/www.whylinuxisbetter.net/">284
+          reviews</A></TD>
+        <TD align=right><A
+          href="http://www.stumbleupon.com/url/www.whylinuxisbetter.net/"><IMG
+          class=png
+          src="/images/star.png"><IMG
+          class=png
+          src="/images/star.png"><IMG
+          class=png
+          src="/images/star.png"><IMG
+          class=png
+          src="/images/star.png"><IMG
+          class=png
+          src="/images/star.png"></A></TD></TR></TBODY></TABLE></DD></DL>
+<% end %>
+</DIV>
+<%= render :partial => 'sidebar' %>

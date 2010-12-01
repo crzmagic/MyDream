@@ -1,0 +1,92 @@
+body {
+	background: transparent;
+	color: #CCCCCC;
+}
+
+a, a:hover, a:visited {
+	color: #54A4DE;
+}
+
+#lbWrapper {
+	display: block;
+	background-color: #4D4D4D;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	width: 500px;
+	height: 200px;
+	overflow: hidden;
+}
+
+#lbWrapper h1 {
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius-bottomleft: 0;
+	-webkit-border-bottom-left-radius: 0;
+	-moz-border-radius-bottomright: 0;
+	-moz-border-bottom-right-radius: 0;
+	background-color: #676767;
+	color: #E6E6E6;
+	font-size: 1.2em;
+	padding: 5px 10px;
+}
+
+#lbWrapper h3 {
+	color: #E6E6E6;
+}
+
+#lbWrapper #loginWrap, #signupWrap {
+	margin: 10px 0;
+}
+
+#signupForm {
+	width: 310px;
+}
+
+#haveAcct {
+	width: 250px;
+}
+
+#lbWrapper #loginform {
+	width: 280px;
+	padding: 0 10px;
+	border-right: 1px dashed #676767;
+}
+
+#lbWrapper #createAccount {
+	padding-top: 10px;
+	width: 199px;
+}
+
+/* FORMS */
+form div.row {
+	margin-bottom: 10px;
+}
+
+form div.banner {
+	border-left: 0;
+	-moz-border-radius: 0 5px 5px 0;
+	margin-top: 1px;
+	margin-left: 1px;
+	color: #EE0000;
+	height: 13px;
+}
+
+form div.row label {
+	color: #CCCCCC;
+}
+
+form div.row input {
+	height: 22px;
+}
+
+form div.row label.fieldLabel {
+	margin-top: 3px;
+	padding: 0;
+	display: block;
+	float: left;
+	width: 75px;
+}
+
+form div.nolabel {
+	padding-left: 75px;
+}

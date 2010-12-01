@@ -1,0 +1,86 @@
+var toolbarConf=
+{
+  debugMode:true,
+  serviceUrl:"/topic/view",//浏览时请求的后台路径，负责处理浏览请求
+  errorUrl:"/topic/error",
+  redirUrl:"/toolb"+"ar/stumble"+".php",
+  authToken:"",
+  healthyUrlInterval:5000,
+  healthyUrlIntervalLong:10000,
+  hashUrlVar:"url=",
+  defaultXhrTimeout:12000,
+  prefetchingBegins:2,
+  prefetch:false,
+  ratingHelp:[
+  {
+    txt:""
+  }
+  ,
+  {
+    txt:"Only a few stumblers have rated this page"
+  }
+  ,
+  {
+    txt:"Some stumblers think this page is okay"
+  }
+  ,
+  {
+    txt:"Stumblers think this page is pretty cool"
+  }
+  ,
+  {
+    txt:"The community thinks this page is amazing!"
+  }
+  ,
+  {
+    txt:"One of the most popular pages on StumbleUpon!"
+  }
+  ],
+  modes:
+  {
+    general:
+    {
+      label:"All Topics",way:"general",source:"general",mode:false,urlLabel:"",requestParams:[]
+    }
+    ,video:
+    {
+      label:"Stumblevideo",way:"video",source:"general",mode:"video",urlLabel:"video",requestParams:[]
+    }
+    ,people:
+    {
+      label:"People",way:"people",source:"general",mode:"people",urlLabel:"people",requestParams:[]
+    }
+    ,photos:
+    {
+      label:"Photos",way:"photos",source:"general",mode:"photos",urlLabel:"photos",requestParams:[]
+    }
+    ,metatopic:
+    {
+      label:"",way:"metatopic",source:"metatopic",mode:"metatopic",urlLabel:"",requestParams:["metatopic"]
+    }
+    ,navtopic:
+    {
+      label:"",way:"navtopic",source:"navtopic",mode:"navtopic",urlLabel:"",requestParams:["navtopic"]
+    }
+    ,topic:
+    {
+      label:"",way:"topic",source:"topic",mode:"topic",urlLabel:"",requestParams:["topic"]
+    }
+    ,instumbler:
+    {
+      label:"",way:"instumbler",source:"instumbler",mode:"instumbler",urlLabel:"",requestParams:[]
+    }
+    ,stumblethru:
+    {
+      label:"",way:"stumblethru",source:"stumblethru",mode:"stumblethru",urlLabel:"",requestParams:["stumblethru"]
+    }
+    ,search:
+    {
+      label:"Search:",way:"search",source:"search",mode:"search",urlLabel:"",requestParams:["search"]
+    }
+    ,supr:
+    {
+      label:"Supr!",way:"supr",source:"supr",mode:"supr",urlLabel:"",requestParams:[]
+    }
+  }
+};

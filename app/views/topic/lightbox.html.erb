@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta name="description" content="Discover your web with StumbleUpon. It's the best way to discover the things you like on the web." />
+<meta name="keywords" content=", stumbleupon, stumbleupon.com, stumble" />
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+<%= stylesheet_link_tag "screen_0708" %>
+<link rel="stylesheet" href="/stylesheets/webtb_lightbox.css" type="text/css" id="stylepreview" />
+<%= javascript_include_tag "jquery-1.2.6.min" %>
+<%= javascript_include_tag "base" %>
+<script type="text/javascript">
+var SERVERDOM = ".stumbleupon.com";
+
+function trk(u) {
+        if (document.images)
+                (new Image).src=u;
+        return true;
+}
+
+</script>
+<title></title>
+
+<script type="text/javascript">
+
+    function flip_profile_version()
+    {
+		$("#flip_to_new_profile_page").submit();
+    }
+
+</script>
+
+</head>
+<body>
+<form method="POST" id="lbWrapper">
+<input type="hidden" id="paneltype" value="login" />
+<div id="col1">
+<h1 class="clearfix">
+  <div class="left"><%= @message_title %></div>
+  <a href="javascript:void(0);" class="right"><img align="top" id="closeButton" src="/images/icon_close_gray_input.gif" style="cursor: pointer; display: block;" class="right mgnLeft"/></a></h1>
+<div class="clearfix">
+<div class="left">
+<div class="row nolabel clearfix">
+<%= @message %>
+</div>
+</div>
+</div>
+</form>
+  
+<script type="text/javascript">
+$('#closeButton').click(function() {
+	parent.lightbox.closeLightbox();
+	parent.toolbarState.showlogin = false;
+});
+</script>

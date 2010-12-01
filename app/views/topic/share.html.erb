@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML>
+<HEAD>
+  <TITLE></TITLE>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<META
+content="Discover your web with StumbleUpon. It's the best way to discover the things you like on the web."
+name=description>
+<META content=", stumbleupon, stumbleupon.com, stumble" name=keywords>
+<LINK href="/images/favicon.ico" type="image/x-icon" rel="shortcut icon">
+<%= stylesheet_link_tag "screen_0708" %>
+<%= stylesheet_link_tag "sidepanel" %>
+<%= javascript_include_tag "jquery-1.2.6.min" %>
+<%= javascript_include_tag "base" %>
+<%= javascript_include_tag "sidepanel" %>
+<%= javascript_include_tag "user" %>
+
+<SCRIPT type="text/javascript">
+	var SERVERDOM = ".stumbleupon.com";
+
+	function trk(u) {
+		if (document.images)
+			(new Image).src=u;
+		return true;
+	}
+
+	</SCRIPT>
+
+<SCRIPT type="text/javascript">
+
+    function flip_profile_version()
+    {
+		$("#flip_to_new_profile_page").submit();
+    }
+
+</SCRIPT>
+</HEAD>
+<BODY>
+<FORM id=spWrapper method=post>
+<INPUT id=shareurl type=hidden value="<%= @s_url %>" name=url>
+<DIV id=sharethis>
+<H1 class=clearfix>
+<DIV class=left>分享</DIV>
+<A class=close href="javascript:void(0);">X</A></H1>
+<UL class=errors>
+  <LI id=ERR_100 style="DISPLAY: none">You must select somebody to send to
+  <LI id=ERR_101 style="DISPLAY: none">Your have shared too many times today
+  <LI id=ERR_102 style="DISPLAY: none">Oops! An error has occured
+  <LI id=ERR_103 style="DISPLAY: none">Your message cannot be over 140 characters
+  <LI id=ERR_104 style="DISPLAY: none">That is an invalid email address </LI></UL>
+<DIV class=box id=success style="DISPLAY: none">
+<H3 class=textSuccess>谢谢分享</H3>
+<P>已经通过E-mail和你的朋友分享该网站了.</P>
+<DIV class=mgnBottom id=postConversation style="DISPLAY: none"></DIV><BR>
+<DIV class=clearfix><INPUT class="btnGreen left shareAgain" id=shareAgain type=button value="Share again >" name=shareAgain>
+<A class="right close" href="javascript:void(0)">Close</A> </DIV></DIV>
+<DIV class=box id=sendForm>
+<DIV class="info clearfix mgnBottomSm"><IMG height=26
+src="/images/18753979.jpg" width=39>
+<DIV><%= @s_url %></DIV></DIV><LABEL class=fieldLabel
+for=contacts>Email to</LABEL> <INPUT class="manual txt" name=contacts[]> <LABEL
+class="fieldLabel mgnBottomSm" for=from_email>From</LABEL> <INPUT class=txt
+id=from_email name=from_email> <TEXTAREA class="txt mgnTop textUncolor" id=msg name=msg></TEXTAREA>
+<DIV class="textSerif right"><SPAN id=charLimit>140</SPAN></DIV>
+<DIV><LABEL for=conversation><INPUT id=conversation type=checkbox CHECKED
+value=true name=conversation>Start a conversation!</LABEL></DIV>
+<DIV style="CLEAR: both"><!-- --></DIV><INPUT class="btnGreen mgnTop" id=sendBtn type=button value="现在就分享 >" name=send>
+</DIV>
+<DIV class=box>
+<H3 class=mgnBottom>Import Contacts</H3>
+<DIV class=textCenter><A id=addHotmail href="javascript:void(0);"><IMG
+src="/images/btn_hotmail.gif" width=110></A> <A id=addYahoo
+href="javascript:void(0);"><IMG src="/images/btn_yahoo.gif"
+width=110></A> <A id=addGmail href="javascript:void(0);"><IMG
+src="/images/btn_gmail.gif" width=110></A> <A id=addAOL
+href="javascript:void(0);"><IMG src="/images/btn_aol.gif"
+width=110></A> </DIV></DIV></DIV>
+<DIV id=contactmanager>
+<H1 class=clearfix>
+<DIV class=left>Add Contacts</DIV><A class=closeImport
+href="javascript:void(0);">X</A></H1>
+<UL class=errors>
+  <LI id=importerr style="DISPLAY: none"></LI></UL>
+<DIV class=box><LABEL class=fieldLabel for=provider>Select your email
+provider</LABEL>
+<DIV><SELECT class="input mgnTopSm" id=provider style="WIDTH: 90%"
+  name=provider> <OPTION value=hotmail selected>Hotmail</OPTION> <OPTION
+  value=yahoo>Yahoo</OPTION> <OPTION value=gmail>Gmail</OPTION> <OPTION
+  value=aol>AOL</OPTION></SELECT> </DIV></DIV>
+<DIV class=box id=importlogin style="DISPLAY: none"><INPUT class=txt
+id=importuser name=importuser> <INPUT class=txt id=importpass type=password
+name=importpass>
+<DIV class="pdgTopSm clear"><!-- --></DIV><INPUT class=btnYellow id=importBtn type=button value="Continue >" name=importBtn>
+
+<P class=importerror></P></DIV>
+<DIV class="box addressBook" id=imports>
+<P class=fieldLabel>Select your friends to share with</P>
+<DIV id=importList></DIV></DIV>
+<DIV class=box id=importmanual><LABEL class=fieldLabel for=contacts>Email this
+site to</LABEL>
+<DIV class=pdgTopSm><!-- --></DIV><INPUT class="manual txt" name=contacts[]>
+<INPUT class="manual txt" name=contacts[]> <INPUT class="manual txt"
+name=contacts[]> <INPUT class="manual txt" name=contacts[]> <INPUT
+class="manual txt" name=contacts[]> </DIV>
+<DIV class=box id=scbox style="DISPLAY: none"><LABEL for=savecontacts><INPUT
+id=savecontacts type=checkbox CHECKED value=true name=savecontacts>Save selected
+emails to contact list</LABEL> </DIV></DIV></FORM></BODY></HTML>

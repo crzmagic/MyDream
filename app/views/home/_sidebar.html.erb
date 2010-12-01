@@ -1,0 +1,93 @@
+</TD>
+    <TD class=sidebar>
+      <DIV class="section clearfix">
+      <DL class="vcard clearfix">
+        <DD class="thumbnail borderGreen"><A class=tips
+        title="mymy828 | 28 year old guy| 1 favorites| Online now"
+        style="BACKGROUND: url(http://cdn.stumble-upon.com/images/nopic2.jpg) #000 no-repeat center center"
+        href="http://mymy828.stumbleupon.com/public/"></A></DD>
+        <DT><A href="http://mymy828.stumbleupon.com/">mymy828</A>
+        <DD class=stats><A href="http://mymy828.stumbleupon.com/public/">个人首页预览</A>
+        <DD class=flairs><IMG title="Online now"
+        style="PADDING-RIGHT: 5px; PADDING-LEFT: 5px; PADDING-BOTTOM: 5px; PADDING-TOP: 5px"
+        alt="Online now"
+        src="/images/icon_online.gif"></DD></DL>
+      <TABLE class="clear userstats textUncolor">
+        <TBODY>
+        <TR>
+          <TD><A href="http://mymy828.stumbleupon.com/favorites/">1<SPAN
+            class=label>个收藏</SPAN></A> </TD></TR></TBODY></TABLE></DIV>
+      <DIV class="section stats clearfix">
+      <H3>详细情况</H3>
+      <TABLE>
+        <TBODY>
+        <TR>
+          <TD class=label>喜欢 </TD>
+          <TD>
+            <UL class=textUncolor
+            style="PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none">
+              <LI><A href="http://mymy828.stumbleupon.com/favorites/">1
+              个页面</A>
+              <LI><A href="http://mymy828.stumbleupon.com/tag/photography/">0
+              张图片</A>
+              <LI><A href="http://mymy828.stumbleupon.com/tag/video/">0
+              个视频</A> </LI></UL></TD>
+        <TR>
+          <TD class=label>历史 </TD>
+          <TD>
+            <UL class=textUncolor
+            style="PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none">
+              <LI><A href="http://mymy828.stumbleupon.com/stumbles/">6
+              次随机浏览</A>
+              <LI><A href="http://mymy828.stumbleupon.com/bads/">0 个不喜欢</A>
+              <LI><A
+              href="http://www.stumbleupon.com/url/mymy828.stumbleupon.com/">0
+              个推荐</A>
+              <LI><A class=textlink
+              href="http://mymy828.stumbleupon.com/picks/">首选</A>
+          </LI></UL></TD></TR></TBODY></TABLE></DIV>
+      <DIV class="section clearfix tagcloud" id=cloudTopics>
+      <H3>你的标签</H3>
+      <UL class="textXSm textUncolor">
+        <LI><A title="1 sites tagged linux" style="FONT-SIZE: 200%"
+        href="http://mymy828.stumbleupon.com/tag/linux/">linux</A> </LI></UL>
+      <UL class="clear liArrow pdgTopSm">
+        <LI><A class=textUncolor
+        href="http://mymy828.stumbleupon.com/tags/">查看全部标签</A>
+      </LI></UL></DIV></TD></TR></TBODY></TABLE></DIV></DIV>
+<SCRIPT type=text/javascript>
+
+
+jQuery('textarea.limited').maxlength({
+'feedback' : '.charsLeft'
+});
+
+jQuery(document).ready (function() {
+
+	// Resize images depending on whether or not a thumbmail is present
+	// IE ONLY
+	if( jQuery.browser.msie == true ) {
+		bd = jQuery('#blogEntries dd.nothumb img').each(function() {
+			if( this.width > 710) this.width = 710;
+		});
+		bd = jQuery('#blogEntries dd.hasthumb img').each(function() {
+			if( this.width > 620) this.width = 620;
+		});
+	}
+
+    jQuery('textarea.expanding').autogrow();
+
+   jQuery("table.userstats td a").bigTarget({
+	   hoverClass: 'hover',
+		clickZone: 'td:eq(0)'
+   });
+
+});
+
+$('#stumble_search_form').submit(function() {
+	var q = $(this).children('input:text').val();
+	var hash = q ? '#search=' + q : '';
+	window.location = 'http://www' + SERVERDOM + '/toolbar/' + hash;
+	return false;
+});
+</SCRIPT>

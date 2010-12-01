@@ -1,0 +1,241 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML xmlns:fb = "http://www.facebook.com/2008/fbml"><HEAD
+  profile=http://purl.org/NET/erdf/profile><TITLE>StumbleUpon: Personalized Recommendations to Help You Discover the Best of the Web</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<META
+  content="StumbleUpon discovers web sites based on your interests, learns what you like and brings you more. "
+  name=description>
+<META
+  content="discover, discovery, websites, photos, videos, blogs, comments, favorites, reviews, stumble, browse, search, StumbleUpon, stumbleupon, stumbleupon.com, stumble"
+  name=keywords>
+<LINK href="/images/favicon.ico" type="image/x-icon" rel="shortcut icon">
+<%= stylesheet_link_tag "screen_0708" %>
+<LINK href="http://purl.org/dc/elements/1.1/"
+                                   rel=schema.dc><LINK href="http://search.yahoo.com/mrss/" rel=schema.media><LINK
+  href="http://www.w3.org/2000/01/rdf-schema#" rel=schema.rdfs><LINK
+  href="http://search.yahoo.com/searchmonkey-relation/" rel=schema.rel><LINK
+  href="http://search.yahoo.com/searchmonkey/reference/" rel=schema.reference>
+
+<%= javascript_include_tag "jquery-1.2.6.min" %>
+<%= javascript_include_tag "base" %>
+<%= javascript_include_tag "AC_RunActiveContent" %>
+<%= javascript_include_tag "ui.core" %>
+<%= javascript_include_tag "jquery.scrollfollow" %>
+
+<SCRIPT type=text/javascript>
+        var SERVERDOM = ".stumbleupon.com";
+
+        function trk(u) {
+        if (document.images)
+        (new Image).src=u;
+        return true;
+        }
+
+        </SCRIPT>
+
+<SCRIPT type=text/javascript>
+
+        function flip_profile_version()
+        {
+        $("#flip_to_new_profile_page").submit();
+        }
+
+        </SCRIPT>
+
+<META content="MSHTML 6.00.6001.18248" name=GENERATOR></HEAD>
+    <BODY>
+<div id="expandedToolbar" class="webtoolbar tbOnyx form" style="position: relative;">
+<ul class="right">
+</ul>
+<a id="linkStumble" title="点击展示下一页" accesskey="s" href="/topic/view">Stumble!</a>
+<ul>
+<li class="mgnLeft">
+<a id="instructionalButton" href="/topic/view" style="display: block;">
+<span id="contextualAbout">
+<span class="textEm textAlert">---->点击发现最好的网站</span>
+</span>
+</a>
+</li>
+</ul>
+</div>
+<DIV class=headerWrapper align=center>
+<DIV class=wrapperFlex style="BACKGROUND-COLOR: transparent! important"
+align=left>
+<DIV id=logo><A class=png id=logoLink
+href="http://www.stumbleupon.com/">&nbsp;</A>
+<H2><A href="http://www.stumbleupon.com/">StumbleUpon</A></H2>
+<P><A href="http://www.stumbleupon.com/">Discover your web</A></P></DIV>
+<DIV class="right form" align=right>
+<DIV class="pdgTopXSm pdgBottomSm textNowrap textDisabled"></DIV>
+<% if session[:username] %>
+<div class="pdgTopXSm pdgBottomSm textNowrap textDisabled">
+Hi
+<a href="http://mymy828.stumbleupon.com/public/"><%= session[:username]   %></a>
+<a class=" subDividerLeft pdgLeft" title="0 new messages" href="http://mymy828.stumbleupon.com/inbox/">
+<img align="top" src="/images/icon_inbox.gif"/>&nbsp;0
+</a>
+<a class=" subDividerLeft pdgLeft" title="0 recent visitors" href="http://mymy828.stumbleupon.com/home/">
+<img align="top" src="/images/icon_visitor.gif"/>&nbsp;0
+</a>
+<a class="subDividerLeft pdgLeft" href="/user/logout">退出</a>
+</div>
+<% end %>
+<FORM action=http://www.stumbleupon.com/search method=get><INPUT class=inputSm
+id=search_q maxLength=32 size=15 name=q> <INPUT class="btnGreenSm mgnLeftSm" id=stumble_search style="-moz-border-radius: 10px 0 0 10px" type=button value=Stumble!><INPUT class=btnGreenSm style="WIDTH: 65px; -moz-border-radius: 0 10px 10px 0" type=submit value="搜索">
+</FORM>
+<% if session[:username] == nil %>
+<DIV class="pdgTopSm pdgBottomXSm textNowrap"><A class=textUl
+href="/user/login">登录</A> <SPAN
+class=textGray>开始推荐吧. 新用户?</SPAN> <A class=textUl
+href="user/sign_up">来这儿</A>
+</DIV>
+<% end %>
+</DIV></DIV></DIV>
+
+    <DIV class=clear><!-- --></DIV>
+    <DIV class=nav align=left>
+    <DIV class=wrapperFlex align=left>
+    <UL>
+    <% index = 0 %>
+    <LI class="<%= title_class(index = index + 1) %>"><A href="/home/myself">个人首页</A> </LI>
+    <LI class="<%= title_class(index = index + 1) %>"><A href="http://www.stumbleupon.com/tag/news/">新闻</A> </LI>
+    <LI><A href="http://www.stumbleupon.com/tag/photos/">照片</A> </LI>
+    <LI><A href="http://www.stumbleupon.com/tag/videos/">视频</A> </LI>
+    <LI><A href="http://www.stumbleupon.com/tag/arts/">艺术</A> </LI>
+    <LI><A href="http://www.stumbleupon.com/tag/business/">商业</A> </LI>
+    <LI><A href="http://www.stumbleupon.com/tag/computers/">计算机</A> </LI>
+    <LI><A href="http://www.stumbleupon.com/tag/health/">健康</A> </LI>
+    <LI><A href="http://www.stumbleupon.com/tag/fun/">搞笑</A> </LI>
+    <LI><A href="http://www.stumbleupon.com/tag/lifestyle/">生活</A> </LI>
+    <LI><A href="http://www.stumbleupon.com/tag/music/">音乐</A> </LI>
+    <LI><A href="http://www.stumbleupon.com/tag/science/">科学</A> </LI>
+    <LI><A href="http://www.stumbleupon.com/tag/sports/">体育</A> </LI>
+    <LI><A href="http://www.stumbleupon.com/tag/technology/">技术</A>
+    </LI></UL></DIV></DIV>
+
+    <%= yield %>
+
+<DIV class=footer align=center>
+  <DIV class=wrapperFlex align=center>
+    <DIV class="quarter left">
+      <UL>
+        <LI>关于 StumbleUpon
+        <LI><A href="http://www.stumbleupon.com/aboutus/">关于我们</A>
+        <LI><A href="http://www.stumbleupon.com/productdemo.php">Take a Tour</A>
+        <LI><A href="http://www.stumbleupon.com/download_autostart.php">下载Toolbar</A>
+        <LI><A href="http://www.stumbleupon.com/technology/">Our Recommendation Engine</A>
+        <LI><A href="http://www.stumbleupon.com/jobs/">招聘求职</A>
+        <LI><A href="http://www.stumbleupon.com/press/">新闻发布</A>
+        <LI><A href="http://blog.stumbleupon.com/">官方Blog</A>
+        <LI><A href="http://www.stumbleupon.com/devblog/">开发者Blog</A>
+    </LI></UL></DIV>
+    <DIV class="quarter left">
+      <UL>
+        <LI>标签
+        <LI><A href="http://www.stumbleupon.com/tag/">标签</A>, <A
+          href="http://www.stumbleupon.com/book/">书籍</A>, <A
+          href="http://www.stumbleupon.com/music/">音乐</A>, <A
+          href="http://www.stumbleupon.com/movie/">电影</A>
+        <LI><A href="http://www.stumbleupon.com/tv/">电视</A>, <A
+          href="http://www.stumbleupon.com/city/">城市</A>, <A
+          href="http://www.stumbleupon.com/country/">国家</A>
+        <LI class=pdgTop>Community
+        <LI><A href="http://www.stumbleupon.com/people/">最近的Stumblers</A>
+        <LI><A href="http://www.stumbleupon.com/topstumblers.php">前十Stumblers</A>
+        <LI><A href="http://group.stumbleupon.com/">用户讨论组</A>
+    <LI><A href="http://www.stumbleupon.com/aboutus/community_rules">交流规则</A> </LI></UL></DIV>
+    <DIV class="quarter left">
+      <UL>
+        <LI>工具和服务
+        <LI><A href="http://www.stumbleupon.com/buttons.php">StumbleUpon Buttons</A>
+        <LI><A href="http://www.stumbleupon.com/ads/">StumbleUpon Advertising</A>
+        <LI><A href="http://www.stumbleupon.com/about/partnerprogram/">Partner Program</A>
+        <LI><A href="http://www.stumbleupon.com/stumblethru.php">StumbleThru</A>
+        <LI class=pdgTop>个人主页
+        <LI><A href="http://www.stumbleupon.com/find_friends.php">和朋友联系</A>
+    <LI><A href="http://www.stumbleupon.com/sign_up.php?pre2=hometab">个性化设置</A> </LI></UL></DIV>
+    <DIV class="quarter left">
+      <UL>
+        <LI>Help
+        <LI><A href="http://www.stumbleupon.com/faq.html">常见问题</A>
+        <LI><A href="http://help.group.stumbleupon.com/forum/">帮助论坛</A>
+        <LI class=pdgTop>站点链接
+        <LI><A href="http://www.stumbleupon.com/privacy/">Privacy</A>
+        <LI><A href="http://www.stumbleupon.com/terms/">Terms of Use</A>
+    </LI></UL></DIV>
+  <DIV class=clear><!-- --></DIV></DIV>
+  <P class="clear pdgTop pdgBottomSm textDisabled textSm" align=center>&#169
+StumbleUpon 2001-2009 </P></DIV>
+<DIV id=sidePanel style="DISPLAY: none; TOP: 32px">
+  <DIV id=spLoading><IMG alt=Loading...
+                         src="/images/loader_dark.gif"></DIV><IFRAME
+    id=spFrame style="WIDTH: 250px; HEIGHT: 100%" name=spFrame src="about:blank"
+  frameBorder=0 noResize></IFRAME></DIV>
+    
+<SCRIPT type="text/javascript">
+
+        jQuery(document).ready(function() {
+
+        jQuery('a.tips').cluetip({
+        cluetipClass: 'jtip',
+        dropshadow: false,
+        showTitle: false,
+        splitTitle: '|',
+        arrows: true,
+        width: 150,
+        dropShadow: false,
+        hoverIntent: {
+        sensitivity:  3,
+        interval:     400,
+        timeout:      0
+        }
+        } );
+
+        // Stumble Search
+        $('#stumble_search').click(function() {
+        var q = $('#search_q').val();
+        //var hash = q ? '#search=' + q : '';
+        var hash = q ? 'search:' + q : '';
+
+        //window.location = 'http://www' + SERVERDOM + '/s/' + hash;
+        window.location = 'http://www' + SERVERDOM + '/s/#/' + hash;
+        });
+
+        // Scroll Follow Side Panel
+        var spoffset = -32;
+        if($('#expandedToolbar').length == 0)
+        {
+        spoffset = 0;
+        $('#sidePanel').css('top',0);
+        }
+
+        $('#sidePanel').scrollFollow({
+        offset:spoffset
+        });
+
+        });
+
+        </SCRIPT>
+
+<SCRIPT
+  src="/javascripts/s_code.js"
+  type="text/javascript"></SCRIPT>
+
+<SCRIPT type=text/javascript><!--
+s.pageName="Homepage";
+s.eVar9 = 'Visitor';
+s.prop9 = 'Visitor';
+if(window.tp_variation !== undefined && window.tp_variation != ""){s.prop10=tp_variation;s.eVar10=tp_variation;}
+if(window.hp_variation !== undefined && window.hp_variation != ""){s.pageName=hp_variation;}
+        var s_code=s.t();if(s_code)document.write(s_code)//-->
+        </SCRIPT>
+<!-- Start Quantcast tag -->
+<SCRIPT
+  src="/javascripts/quant.js"
+  type=text/javascript></SCRIPT>
+
+<SCRIPT type=text/javascript>_qacct="p-dez5MJMQSF95o";quantserve();</SCRIPT>
+<NOSCRIPT><A href="http://www.quantcast.com/p-dez5MJMQSF95o" target=_blank><IMG
+  style="DISPLAY: none" height=1 alt=Quantcast
+  src="/stylesheets/p-dez5MJMQSF95o.gif"
+  width=1 border=0></A> </NOSCRIPT><!-- End Quantcast tag --></BODY></HTML>

@@ -1,0 +1,21 @@
+var lightbox=
+{
+openLightbox:function(_6a,_6b,_6c)
+{
+$("#webtbLightbox").css("display","block");
+$("#lbFrame").attr("src",_6a);
+if(_6b)
+{
+$("#lbFrame").css("width",_6b);
+}
+if(_6c)
+{
+$("#lbFrame").css("height",_6c);
+}
+}
+,closeLightbox:function()
+{
+$("#webtbLightbox").css("display","none");
+$("#lbFrame").attr("src","");
+}
+};

@@ -1,0 +1,687 @@
+<SCRIPT src="/javascripts/yahoo.js"
+type=text/javascript></SCRIPT>
+
+<SCRIPT src="/javascripts/user.js"
+type=text/javascript></SCRIPT>
+
+<SCRIPT type=text/javascript>
+	var SERVERDOM = ".stumbleupon.com";
+
+	function trk(u) {
+		if (document.images)
+			(new Image).src=u;
+		return true;
+	}
+
+	</SCRIPT>
+
+<SCRIPT type=text/javascript>
+
+    function flip_profile_version()
+    {
+		$("#flip_to_new_profile_page").submit();
+    }
+
+</SCRIPT>
+<SCRIPT type=text/javascript>
+
+	var awhile = new Date();
+	awhile.setTime(awhile.getTime() + 86400 * 365 * 10);
+
+	$('#expandButton').click(function() {
+		$('#collapsedToolbar').slideUp('fast', function() {
+			$('#expandedToolbar').slideDown('slow');
+		});
+		setToolbarCookie('sitetoolbarstate', '1', awhile, '/');
+	});
+	$('#collapseButton').click(function() {
+		$('#expandedToolbar').slideUp('slow', function() {
+			$('#collapsedToolbar').slideDown();
+		});
+		setToolbarCookie('sitetoolbarstate', '0', awhile, '/');
+	});
+
+	function setToolbarCookie(name, value, expires, path, domain, secure)
+	{
+		domain = SERVERDOM;
+		var curCookie = name + '=' + escape(value) +
+			((expires) ? '; expires=' + expires.toGMTString() : '') +
+			((path) ? '; path=' + path : '') +
+			((domain) ? '; domain=' + domain : '') +
+			((secure) ? '; secure' : '');
+		document.cookie = curCookie;
+	}
+
+
+
+	</SCRIPT>
+
+<SCRIPT type=text/javascript>
+
+try {
+	if (this.window.name == 'stumbleContent')
+	{
+		$('#expandedToolbar').hide();
+		$('#collapsedToolbar').hide();
+	}
+}
+catch (e) {
+}
+
+$('#contextualAbout').html("to see sites about <span class=\'textAlert textEm teaserTopics\' style=\'cursor:pointer;\'>Activism</span>, <span class=\'textAlert textEm teaserTopics\' style=\'cursor:pointer;\'>MacOS</span>, <span class=\'textAlert textEm teaserTopics\' style=\'cursor:pointer;\'>History</span>, and more");
+
+$('.teaserTopics').click(function() {
+	document.location.href = 'http://www'+SERVERDOM+'/toolbar/#topic='+$(this).html();
+	return false;
+});
+
+$('#linkStumble').attr('href', 'http://www.stumbleupon.com/s/');
+$('#instructionalButton').attr('href', 'http://www.stumbleupon.com/s/');
+
+$('#instructionalButton').hide();
+$('#instructionalButton').fadeIn('slow');
+</SCRIPT>
+
+<SCRIPT src="/javascripts/fckeditor.js"
+type=text/javascript></SCRIPT>
+
+<SCRIPT type=text/javascript>
+var fauth = '4a62c6e164f185.90575288';
+var mode = '1';
+var offset = '0';
+
+function replaceAll(str, strFind, strReplace)
+{
+	while (str.indexOf(strFind) > -1)
+	{
+		str = str.replace(strFind, strReplace);
+	}
+	return str;
+}
+
+function checkMaxLength(taText, l)
+{
+	if (taText.value.length > l)
+	{
+		var len = taText.value.length;
+		taText.value = taText.value.substr(0, l);
+                return false;
+	}
+	return true;
+}
+
+function saveChoice(choice)
+{
+	_setUserCookie('editor_mode',choice,'','/');
+	var lm = document.getElementById('lastmodeid');
+	lm.value = choice;
+}
+
+function getChoice()
+{
+	/*
+	visualBlog();
+	return;
+	*/
+
+	//always on for now
+	var choice;
+	var choiceCookie = _readCookie('editor_mode');
+	if (!choiceCookie)
+		choice = "plain";
+	else
+		choice = choiceCookie;
+
+	if (choice == "visual")
+	{
+		if (navigator.userAgent.indexOf('MSIE 6.0') == -1)
+			visualBlog();
+	}
+	else
+	{
+		document.getElementById('blogContent').focus();
+	}
+
+}
+
+function createEditor()
+{
+	document.getElementById('blogContentFCK').value = replaceAll(document.getElementById('blogContent').value, "\n", "<br />");
+
+	var editor = new FCKeditor('blogContentFCK');
+
+	editor.BasePath = '/fckeditor/';
+	editor.Width    = '100%';
+	editor.Height   = '208';
+	editor.ToolbarSet = 'Stumble';
+
+	editor.ReplaceTextarea();
+
+}
+
+function visualBlog()
+{
+	var fckdiv = document.getElementById('blog_fckeditor');
+	if (fckdiv.style.display == "block")
+		return;
+
+	var editor;
+	if (typeof(FCKeditorAPI) != 'undefined')
+		editor = FCKeditorAPI.GetInstance('blogContentFCK');
+
+	if (!editor)
+	{
+		createEditor();
+	}
+	else
+	{
+		var orig = document.getElementById('blogContent').value;
+		var strVal = replaceAll(orig, "\n", "<br />");
+
+		//editor.SetHTML(document.getElementById('blogContent').value);
+		editor.SetHTML(strVal);
+	}
+
+	var txtdiv = document.getElementById('blog_plaintext');
+	txtdiv.style.display = 'none';
+	fckdiv.style.display = 'block';
+	document.getElementById('toggleButtonsNormal').style.display = 'none';
+	document.getElementById('toggleButtonsVisual').style.display = 'inline';
+
+	if (editor && !document.all)
+	{
+		if (editor.EditMode == FCK_EDITMODE_WYSIWYG)
+			editor.MakeEditable();
+	}
+
+
+	saveChoice('visual');
+}
+
+
+function textBlog()
+{
+	var txtdiv = document.getElementById('blog_plaintext');
+	if (txtdiv.style.display == "block")
+		return;
+
+	var editor;
+	if (typeof(FCKeditorAPI) != 'undefined')
+		editor = FCKeditorAPI.GetInstance('blogContentFCK');
+
+	if (!editor)
+		return;
+
+	var fckdiv = document.getElementById('blog_fckeditor');
+	fckdiv.style.display = 'none';
+	txtdiv.style.display = 'block';
+	document.getElementById('blogContent').value = editor.GetXHTML();
+	document.getElementById('blogContent').value = replaceAll(document.getElementById('blogContent').value, "<br />", "\n");
+
+	document.getElementById('toggleButtonsNormal').style.display = 'inline';
+	document.getElementById('toggleButtonsVisual').style.display = 'none';
+
+	document.getElementById('blogContent').focus();
+
+	saveChoice('plain');
+}
+
+function fade_delete_controls(blogid)
+{
+//	$('#blog_delete_controls_'+blogid).slideUp(800);
+	$('#delete_comment_'+blogid).slideUp(400);
+}
+
+function fade_blog(blogid, rating)
+{
+	//$('#blog_delete_controls_'+blogid).slideUp(800, function() {
+	$('#delete_comment_'+blogid).slideUp(400, function() {
+
+			if (rating)
+			{
+				$('#blog_'+blogid).fadeTo('slow', 0.5, function () {
+						$('#blog_title_link_'+blogid).addClass('textDisabled');
+						$('#blog_title_'+blogid).html($('#blog_title_link_'+blogid).html());
+						$('#blog_title_'+blogid).addClass('textDisabled');
+					});
+			}
+			else
+			{
+				$('#blog_contents_'+blogid).fadeTo('slow', 0.5, function () {
+						$('#blog_contents_'+blogid).html('Entry deleted.');
+					});
+			}
+
+			var blog_contents = $('#blog_contents_'+blogid);
+			if (blog_contents.length)
+			{
+				var contents = $('#blog_contents_'+blogid).html();
+				contents = contents.replace(/</g, '&lt;');
+				contents = contents.replace(/>/g, '&gt;');
+				$('#blog_contents_'+blogid).html('Entry deleted.');
+			}
+			if (rating)
+			{
+			}
+	});
+}
+
+function delete_rating_v3(blogid, url)
+{
+	var params = 'stumbler=' +  stumbler + '&action=deleterating&ftoken=' + fauth + '&url=' + encodeURIComponent(url) + '&ajax=1';
+
+	jQuery.ajax({
+		type: 'POST',
+		url: '/ajax/',
+		data: params,
+		error: function() { /* ignore error */}
+	});
+
+	fade_blog(blogid, true);
+}
+
+function delete_comment_v3(commentid, ratingAlso)
+{
+	$('#blog_edit_link_'+commentid).attr('href', '#');
+	$('#blog_edit_link_'+commentid).hide();
+	var params = 'stumbler=' +  stumbler + '&action=deletecomment&ftoken=' + fauth + '&commentid=' + commentid + '&ajax=1';
+	if (ratingAlso)
+		params += '&rating=1';
+
+	jQuery.ajax({
+		type: 'POST',
+		url: '/ajax/',
+		data: params,
+		error: function() { /* ignore error */}
+	});
+
+	if (ratingAlso)
+		fade_blog(commentid, true);
+	else
+		fade_blog(commentid, false);
+}
+
+function show_delete_v3(commentid)
+{
+	$('#delete_comment_'+commentid).slideDown();
+	var offsetY = $(window).scrollTop();
+	var deleteBoxOffset = $('#delete_comment_'+commentid).offset().top;
+	var windowHeight = $(window).height();
+	var blogEntryHeight = $('#blog_'+commentid).height();
+
+	y = -200;
+	/*
+	if (blogEntryHeight > windowHeight || deleteBoxOffset > (scrollY + windowHeight))
+		$.scrollTo($('#delete_comment_'+commentid), 800, {offset: y});
+		*/
+	$.scrollTo($('#delete_comment_'+commentid), 800, {offset: y});
+}
+
+function unrate_v3(url)
+{
+	if (confirm("Are you sure you want to delete your rating for this site?"))
+		window.document.location="http://" + SERVERNAME + "/user.php?stumbler=" +  stumbler + "&action=deleterating&ftoken=" + fauth + "&url=" + url + "&mode=" + mode + "&offset=" + offset;
+}
+
+var display_blog_tab = "";		// what blog tab is open?
+function toggle_form( type )
+{
+	jQuery('#blog_errors').html('');
+
+	if( !display_blog_tab)
+	{
+		jQuery('#paneAddBlog').toggle();
+		jQuery('.post_a_' + type ).toggle();
+		display_blog_tab = type;
+	}
+	else if( type == display_blog_tab )
+	{
+		jQuery('#paneAddBlog').toggle();
+        jQuery('.post_a_' + type ).toggle();
+        display_blog_tab = "";
+	}
+	else
+	{
+		jQuery('.post_a_' + type ).toggle();
+		jQuery('.post_a_' + display_blog_tab ).toggle();
+		display_blog_tab = type;
+	}
+}
+
+function validate_blog_form()
+{
+	errors = new Array();
+
+	var editor;
+    if (typeof(FCKeditorAPI) != 'undefined')
+        editor = FCKeditorAPI.GetInstance('blogContentFCK');
+
+    if (!editor)
+	{
+		visual_blog_content = "";
+	}
+	else
+	{
+		visual_blog_content = editor.GetXHTML();
+	}
+
+	blog_content = jQuery('#blogContent').attr('value');
+
+	if( !blog_content && !visual_blog_content )
+	{
+		if( display_blog_tab === 'blog' )
+		{
+			jQuery('#blog_errors').html("You haven't blogged about anything yet");
+			return true;
+		}
+		else
+		{
+			if( jQuery('#url').attr('value') == "" )
+			{
+				jQuery('#blog_errors').html("Please supply a url");
+				return true;
+			}
+			/*
+			else
+			{
+				jQuery('#blog_errors').html("Please tell us what you think about this " + display_blog_tab);
+			}
+			*/
+		}
+
+    }
+
+	// no errors
+	return false;
+}
+
+function post_blog_entry()
+{
+	if ( !display_blog_tab ) return; 	// nothing to submit
+
+	errors = validate_blog_form();
+
+	// if there are errors, don't submit
+	if( errors === true )
+		return false;
+
+	var url = jQuery('#url').attr('value');
+	var photoRegExp = new RegExp("(gif|jpg|png)$", "i");
+
+	if( embed_pics && url && url.search(photoRegExp) != -1 && jQuery('#blogContent').attr('value').indexOf(url) == -1 )
+	{
+		var photo_img = "<br /><a rel='nofollow' href='" + url + "'><img border='0' src='" + url + "' /></a>";
+		var blog_content = jQuery('#blogContent').attr('value') + photo_img;
+		var blog_content_fck = jQuery('#blogContentFCK').attr('value') + photo_img;
+
+		jQuery('#blogContent').attr('value', blog_content);
+		jQuery('#blogContentFCK').attr('value', blog_content_fck);
+	}
+
+	jQuery('#postToBlogForm').submit();
+	return false;
+}
+
+function cancel_blog_entry()
+{
+	if( !display_blog_tab) return false;
+
+	jQuery('#blogTitle').removeAttr('value');
+	jQuery('#url').removeAttr('value');
+	jQuery('#blogContent').removeAttr('value');
+	jQuery('#blogContentFCK').removeAttr('value');
+
+	toggle_form(display_blog_tab);
+
+	if( edit_cancel_url )
+		window.top.location = edit_cancel_url;
+}
+
+
+var SERVERNAME = 'www.stumbleupon.com';
+var stumbler = 'mymy828';
+document.onkeydown = navigate_blog;
+embed_pics = true;
+</SCRIPT>
+
+<DIV class=contentWrapper>
+<DIV class=subnav align=left>
+<DIV class=wrapperFlex>
+<UL>
+  <LI class=current><A href="http://mymy828.stumbleupon.com/">Your Favorites</A>
+  </LI>
+  <LI><A href="http://mymy828.stumbleupon.com/home/">What's New</A> </LI>
+  <LI><A href="http://mymy828.stumbleupon.com/friends/">Friends</A> </LI>
+  <LI><A href="http://mymy828.stumbleupon.com/inbox/">Inbox</A> </LI>
+  <LI><A href="http://mymy828.stumbleupon.com/groups/">Groups</A> </LI>
+  <LI><A href="http://mymy828.stumbleupon.com/prefs/">Preferences</A> </LI></UL>
+<DIV class=clear><!-- --></DIV></DIV></DIV>
+<DIV class=wrapperFlex id=wrapper>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD class="main nopadding" colSpan=2>
+      <H1>Your Favorites </H1></TD></TR>
+  <TR>
+    <TD class=main>
+      <DIV class="form sectionCmds">
+      <UL class="cmds right">
+        <LI class="noborder nopadding nomargin textlink textUncolor"><A
+        class=textlink title="List view"
+        href="http://www.stumbleupon.com/user.php?mode=1&amp;stumbler=mymy828&amp;source=user_favs&amp;action=viewmode&amp;viewmode=list&amp;offset=0&amp;ftoken=4a62c6e164f185.90575288"><IMG
+        class="png iconListViewOff" alt="List view"
+        src="/images/s.gif"></A>
+        <IMG class="png iconGridViewOn" title="Grid view" alt="Grid view"
+        src="/images/s.gif">
+      </LI></UL>
+      <UL class=cmds>
+        <LI class=textlink><A class=""
+        href="http://mymy828.stumbleupon.com/blog/">Reviews</A>
+        <LI class=textlink><A class=current
+        href="http://mymy828.stumbleupon.com/favorites/">Favorites</A>
+        <LI class=textlink><A class=""
+        href="http://mymy828.stumbleupon.com/tag/photography/">Photos</A>
+        <LI class=textlink><A class=""
+        href="http://mymy828.stumbleupon.com/tag/video/">Videos</A>
+        <LI class=textlink><A class=""
+        href="http://mymy828.stumbleupon.com/discoveries/">Discoveries</A>
+      </LI></UL>
+      <DIV class=clear><!-- --></DIV>
+      <DIV class="bannerPromo bannerLite pdgLeftLg mgnTopSm mgnBottomSm"><SPAN
+      class="pdgLeftLg textDisabled">推荐: </SPAN>
+      <A class="textDisabled pdgLeftLg pdgRightLg" onclick="toggle_form('site');"
+      href="javascript:void(0);"><IMG class=iconSite
+      src="/images/s.gif">
+      网站</A> <A class="textDisabled pdgLeftLg pdgRightLg"
+      onclick="toggle_form('blog');" href="javascript:void(0);"><IMG class=icon
+      src="/images/s.gif">
+      博客</A> <A class="textDisabled pdgLeftLg pdgRightLg"
+      onclick="toggle_form('video');" href="javascript:void(0);"><IMG
+      class=iconVids
+      src="/images/s.gif">
+      视频</A> <A class="textDisabled pdgLeftLg pdgRightLg"
+      onclick="toggle_form('picture');" href="javascript:void(0);"><IMG
+      class=iconPics
+      src="/images/s.gif">
+      图片</A> </DIV></DIV>
+      <DIV class=clearfix></DIV>
+      <DIV class="mgnTop form" id=paneAddBlog style="DISPLAY: none">
+      <% form_tag :id=>"postToBlogForm", :name=>"postToBlogForm", 
+        :class=>"clearfix",
+        :controller=>"topic",:action=>"create" do -%>
+      <INPUT type=hidden
+      value=editblog name=action> <INPUT type=hidden
+      value=4a62c6e164f185.90575288 name=ftoken> <INPUT type=hidden
+      value=website name=submit_method> <INPUT type=hidden value=1 name=web>
+      <INPUT type=hidden value=1 name=submitsite> <INPUT type=hidden
+      value=editblog name=action> <INPUT id=lastmodeid type=hidden
+      name=lastmode> <INPUT id=preview type=hidden value=no name=preview>
+      <DIV class="dividerBottom pdgBottom">
+      <DIV class=clearfix>
+      <DIV class="pdgRight left mgnTopSm fieldLabel" style="WIDTH: 80px"><SPAN
+      class=post_a_site style="DISPLAY: none">Site URL</SPAN> <SPAN
+      class=post_a_video style="DISPLAY: none">Video URL</SPAN> <SPAN
+      class=post_a_picture style="DISPLAY: none">Picture URL</SPAN> <SPAN
+      class=post_a_blog style="DISPLAY: none">Blog title</SPAN> </DIV>
+      <DIV class="post_a_site post_a_video post_a_picture"
+      style="DISPLAY: none; MARGIN-LEFT: 80px"><INPUT class=inputLg id=url
+      style="WIDTH: 420px! important" name=url> </DIV>
+      <DIV class=post_a_blog style="DISPLAY: none"><INPUT class=inputLg
+      id=blogTitle style="WIDTH: 420px! important" name=blogTitle> </DIV></DIV>
+      <DIV class="mgnTop clearfix">
+      <DIV class="pdgRight left mgnTopSm fieldLabel"
+      style="WIDTH: 80px; HEIGHT: 30px"><SPAN class=post_a_site
+      style="DISPLAY: none">Review</SPAN> <SPAN class=post_a_video
+      style="DISPLAY: none">Review</SPAN> <SPAN class=post_a_picture
+      style="DISPLAY: none">Caption</SPAN> <SPAN class=post_a_blog
+      style="DISPLAY: none">Blog</SPAN> </DIV>
+      <DIV class=textError id=blog_errors></DIV>
+      <DIV class=pdgTopSm style="MARGIN-LEFT: 80px"><SPAN id=toggleButtonsNormal
+      style="DISPLAY: inline"><B>Normal</B> | <A
+      href="javascript:visualBlog();">Visual Editor</A></SPAN> <SPAN
+      id=toggleButtonsVisual style="DISPLAY: none"><A
+      href="javascript:textBlog();">Normal</A> | <B>Visual Editor</B></SPAN>
+      <DIV id=blog_plaintext><TEXTAREA class=limited id=blogContent style="WIDTH: 450px; HEIGHT: 100px" name=newcomment rows=15 cols=50 maxlength="4000"></TEXTAREA>
+      </DIV>
+      <DIV class=left id=blog_fckeditor style="DISPLAY: none; WIDTH: 650px"><TEXTAREA class=limited id=blogContentFCK name=newcommentvisual rows=15 cols=50 maxlength="4000"></TEXTAREA>
+      </DIV>
+      <DIV class="pdgTopSm hidden" style="MARGIN-LEFT: 80px"><INPUT id=tagtext
+      style="WIDTH: 440px" name=tags> </DIV></DIV></DIV>
+      <DIV class="mgnTop clearfix">
+      <DIV class="pdgRight left mgnTopSm fieldLabel"
+      style="WIDTH: 80px; HEIGHT: 20px" align=right><!-- --></DIV>
+      <DIV style="MARGIN-LEFT: 80px; WIDTH: 450px"><SPAN class=right><INPUT
+      id=makesticky type=checkbox name=makesticky><LABEL
+      for=makesticky>Sticky</LABEL> </SPAN><INPUT class=btnGreen id=submit_buttom onclick="return post_blog_entry();" type=submit value="Post New Blog >" name=submit_button />
+      <A class=pdgLeftLg style="LINE-HEIGHT: 24px"
+      onclick="return cancel_blog_entry();"
+      href="javascript:void(0);">Cancel</A> <A
+      class="subDividerLeft mgnLeft pdgLeft" style="LINE-HEIGHT: 24px"
+      onclick="jQuery('#preview').attr('value', 'yes'); return post_blog_entry();"
+      href="javascript:void(0);">Preview</A> </DIV></DIV></DIV>
+      <% end -%>
+      <DIV class="clear pdgTopLg"><!-- --></DIV></DIV>
+      <DIV class=clearfix id=blogEntries>
+      <DL class="dlSite dlGrid">
+        <DD class=thumbnail><A
+        style="BACKGROUND-IMAGE: url(http://cdn.stumble-upon.com/mthumb/660/5396660.jpg)"
+        href="http://www.stumbleupon.com/to/4Ks9Fa/www.whylinuxisbetter.net/t:4a62c6e1e0795;src:user;nature:thumbnail-0;topic:234"><IMG
+        src="/images/s.gif"></A><A
+        class=sharethis style="DISPLAY: none"
+        href="http://mymy828.stumbleupon.com/toolbar/sidepanel.php?url=http%3A%2F%2Fwww.whylinuxisbetter.net%2F">Share
+        This</A>
+        <DT class=textDisabled><A
+        href="http://www.stumbleupon.com/to/4Ks9Fa/www.whylinuxisbetter.net/t:4a62c6e1e0795;src:user;topic:234">Why
+        Linux is better</A></DT>
+        <DD class=stats>
+        <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+          <TBODY>
+          <TR>
+            <TD class=textUncolor><A
+              href="http://www.stumbleupon.com/url/www.whylinuxisbetter.net/">284
+              reviews</A></TD>
+            <TD align=right><A
+              href="http://www.stumbleupon.com/url/www.whylinuxisbetter.net/"><IMG
+              class=png
+              src="/images/star.png"><IMG
+              class=png
+              src="/images/star.png"><IMG
+              class=png
+              src="/images/star.png"><IMG
+              class=png
+              src="/images/star.png"><IMG
+              class=png
+              src="/images/star.png"></A></TD></TR></TBODY></TABLE></DD></DL></DIV></TD>
+    <TD class=sidebar>
+      <DIV class="section clearfix">
+      <DL class="vcard clearfix">
+        <DD class="thumbnail borderGreen"><A class=tips
+        title="mymy828 | 28 year old guy| 1 favorites| Online now"
+        style="BACKGROUND: url(http://cdn.stumble-upon.com/images/nopic2.jpg) #000 no-repeat center center"
+        href="http://mymy828.stumbleupon.com/public/"></A></DD>
+        <DT><A href="http://mymy828.stumbleupon.com/">mymy828</A>
+        <DD class=stats><A href="http://mymy828.stumbleupon.com/public/">Public
+        profile</A>
+        <DD class=flairs><IMG title="Online now"
+        style="PADDING-RIGHT: 5px; PADDING-LEFT: 5px; PADDING-BOTTOM: 5px; PADDING-TOP: 5px"
+        alt="Online now"
+        src="/images/icon_online.gif"></DD></DL>
+      <TABLE class="clear userstats textUncolor">
+        <TBODY>
+        <TR>
+          <TD><A href="http://mymy828.stumbleupon.com/favorites/">1<BR><SPAN
+            class=label>favorites</SPAN></A> </TD></TR></TBODY></TABLE></DIV>
+      <DIV class="section stats clearfix">
+      <H3>Stats</H3>
+      <TABLE>
+        <TBODY>
+        <TR>
+          <TD class=label>Liked </TD>
+          <TD>
+            <UL class=textUncolor
+            style="PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none">
+              <LI><A href="http://mymy828.stumbleupon.com/favorites/">1
+              pages</A>
+              <LI><A href="http://mymy828.stumbleupon.com/tag/photography/">0
+              photo</A>
+              <LI><A href="http://mymy828.stumbleupon.com/tag/video/">0
+              video</A> </LI></UL></TD>
+        <TR>
+          <TD class=label>History </TD>
+          <TD>
+            <UL class=textUncolor
+            style="PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none">
+              <LI><A href="http://mymy828.stumbleupon.com/stumbles/">6
+              stumbles</A>
+              <LI><A href="http://mymy828.stumbleupon.com/bads/">0 disliked</A>
+              <LI><A
+              href="http://www.stumbleupon.com/url/mymy828.stumbleupon.com/">0
+              testimonials</A>
+              <LI><A class=textlink
+              href="http://mymy828.stumbleupon.com/picks/">Top picks</A>
+          </LI></UL></TD></TR></TBODY></TABLE></DIV>
+      <DIV class="section clearfix tagcloud" id=cloudTopics>
+      <H3>Your tags</H3>
+      <UL class="textXSm textUncolor">
+        <LI><A title="1 sites tagged linux" style="FONT-SIZE: 200%"
+        href="http://mymy828.stumbleupon.com/tag/linux/">linux</A> </LI></UL>
+      <UL class="clear liArrow pdgTopSm">
+        <LI><A class=textUncolor
+        href="http://mymy828.stumbleupon.com/tags/">View all tags</A>
+      </LI></UL></DIV></TD></TR></TBODY></TABLE></DIV></DIV>
+<SCRIPT type=text/javascript>
+
+
+jQuery('textarea.limited').maxlength({
+'feedback' : '.charsLeft'
+});
+
+jQuery(document).ready (function() {
+
+	// Resize images depending on whether or not a thumbmail is present
+	// IE ONLY
+	if( jQuery.browser.msie == true ) {
+		bd = jQuery('#blogEntries dd.nothumb img').each(function() {
+			if( this.width > 710) this.width = 710;
+		});
+		bd = jQuery('#blogEntries dd.hasthumb img').each(function() {
+			if( this.width > 620) this.width = 620;
+		});
+	}
+
+    jQuery('textarea.expanding').autogrow();
+
+   jQuery("table.userstats td a").bigTarget({
+	   hoverClass: 'hover',
+		clickZone: 'td:eq(0)'
+   });
+
+});
+
+$('#stumble_search_form').submit(function() {
+	var q = $(this).children('input:text').val();
+	var hash = q ? '#search=' + q : '';
+	window.location = 'http://www' + SERVERDOM + '/toolbar/' + hash;
+	return false;
+});
+</SCRIPT>

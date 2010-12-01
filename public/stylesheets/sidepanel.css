@@ -1,0 +1,159 @@
+BODY {
+	BACKGROUND-IMAGE: url(/images/sidepanelbkg.gif); COLOR: #b3b3b3; BACKGROUND-REPEAT: repeat-y; FONT-FAMILY: "lucida grande", verdana, tahoma, arial, sans-serif; BACKGROUND-COLOR: #333333
+}
+A {
+	COLOR: #206ba4! important; TEXT-DECORATION: underline! important
+}
+A:hover {
+	COLOR: #206ba4! important; TEXT-DECORATION: underline! important
+}
+A.close {
+	COLOR: #666666; TEXT-DECORATION: none
+}
+A.close:hover {
+	COLOR: #666666; TEXT-DECORATION: none
+}
+#importList {
+	BORDER-RIGHT: #808080 1px solid; BORDER-TOP: #808080 1px solid; OVERFLOW-Y: scroll; OVERFLOW-X: hidden; BORDER-LEFT: #808080 1px solid; WIDTH: 228px; BORDER-BOTTOM: #808080 1px solid; HEIGHT: 170px
+}
+#contactList {
+	BORDER-RIGHT: #808080 1px solid; BORDER-TOP: #808080 1px solid; OVERFLOW-Y: scroll; OVERFLOW-X: hidden; BORDER-LEFT: #808080 1px solid; WIDTH: 228px; BORDER-BOTTOM: #808080 1px solid; HEIGHT: 170px
+}
+#intsList {
+	BORDER-RIGHT: #808080 1px solid; BORDER-TOP: #808080 1px solid; OVERFLOW-Y: scroll; OVERFLOW-X: hidden; BORDER-LEFT: #808080 1px solid; WIDTH: 228px; BORDER-BOTTOM: #808080 1px solid; HEIGHT: 170px
+}
+#spWrapper {
+	DISPLAY: block; WIDTH: 500px; HEIGHT: 100%
+}
+#spWrapper #col1 {
+	FLOAT: left; OVERFLOW: hidden; WIDTH: 250px
+}
+#spWrapper #sharethis {
+	FLOAT: left; OVERFLOW: hidden; WIDTH: 250px
+}
+#spWrapper #contactmanager {
+	FLOAT: left; OVERFLOW: hidden; WIDTH: 250px
+}
+#spWrapper .addmore {
+	BACKGROUND-COLOR: #262626
+}
+#spWrapper H1 {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; FONT-SIZE: 1.2em; MARGIN-BOTTOM: 5px; PADDING-BOTTOM: 5px; COLOR: #f8c936; PADDING-TOP: 5px; BACKGROUND-COLOR: #1a1a1a
+}
+#spWrapper H2 {
+	COLOR: #948b6e
+}
+#spWrapper H3 {
+	COLOR: #948b6e
+}
+#spWrapper H1 A.close {
+	DISPLAY: block; FLOAT: right
+}
+#spWrapper H1 A.closeImport {
+	DISPLAY: block; FLOAT: right
+}
+#importList LABEL {
+	DISPLAY: block; OVERFLOW: hidden; WIDTH: 100%; WHITE-SPACE: nowrap
+}
+#contactList LABEL {
+	DISPLAY: block; OVERFLOW: hidden; WIDTH: 100%; WHITE-SPACE: nowrap
+}
+#intsList LABEL {
+	DISPLAY: block; OVERFLOW: hidden; WIDTH: 100%; WHITE-SPACE: nowrap
+}
+#spWrapper INPUT.txt {
+	BORDER-RIGHT: #545454 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #545454 1px solid; DISPLAY: block; PADDING-LEFT: 2px; FONT-SIZE: 1.1em; MARGIN-BOTTOM: 5px; PADDING-BOTTOM: 2px; BORDER-LEFT: #545454 1px solid; WIDTH: 90%; COLOR: #4d4d4d; LINE-HEIGHT: 1em; PADDING-TOP: 2px; BORDER-BOTTOM: #545454 1px solid; FONT-FAMILY: "lucida grande", verdana, tahoma, arial, sans-serif; BACKGROUND-COLOR: white
+}
+#spWrapper TEXTAREA.txt {
+	BORDER-RIGHT: #545454 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #545454 1px solid; DISPLAY: block; PADDING-LEFT: 2px; FONT-SIZE: 1.1em; MARGIN-BOTTOM: 5px; PADDING-BOTTOM: 2px; BORDER-LEFT: #545454 1px solid; WIDTH: 90%; COLOR: #4d4d4d; LINE-HEIGHT: 1em; PADDING-TOP: 2px; BORDER-BOTTOM: #545454 1px solid; FONT-FAMILY: "lucida grande", verdana, tahoma, arial, sans-serif; BACKGROUND-COLOR: white
+}
+#spWrapper TEXTAREA#msg {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; MARGIN-BOTTOM: 1px; PADDING-BOTTOM: 2px; WIDTH: 226px; PADDING-TOP: 2px
+}
+#spWrapper DIV.charinfo {
+	FONT-SIZE: 0.8em; MARGIN-BOTTOM: 10px; TEXT-ALIGN: right
+}
+#spWrapper INPUT#SelectAll {
+	MARGIN: 0px 5px 0px 0px
+}
+#spWrapper #imports {
+	DISPLAY: none
+}
+#spWrapper DIV.addContacts {
+	MARGIN: 0px 0px 10px
+}
+#spWrapper DIV.box {
+	MARGIN: 0px 10px 10px
+}
+#spWrapper DIV.box DIV.postTo {
+	PADDING-RIGHT: 3px; PADDING-LEFT: 5px; FONT-WEIGHT: bold; FONT-SIZE: 1em; PADDING-BOTTOM: 3px; WIDTH: 222px; COLOR: #3b5998; PADDING-TOP: 5px; BACKGROUND-COLOR: #d9e4f0
+}
+#spWrapper DIV.box DIV.postTo A {
+	CURSOR: hand; TEXT-DECORATION: none! important
+}
+#spWrapper FORM#shareForm {
+	
+}
+#spWrapper #sendForm DIV.info {
+	OVERFLOW: hidden
+}
+#spWrapper #sendForm DIV.info IMG {
+	FLOAT: left; MARGIN: 1px 5px 5px 0px
+}
+#spWrapper DIV#importmanual {
+	DISPLAY: none
+}
+#spWrapper DIV.success {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; PADDING-BOTTOM: 10px; PADDING-TOP: 10px
+}
+#spWrapper DIV.success H2 {
+	FONT-SIZE: 1em; COLOR: #00ff00
+}
+#spWrapper DIV.errors {
+	COLOR: #ff0000; PADDING-TOP: 0px
+}
+UL.errors {
+	COLOR: #ff0000; LIST-STYLE-TYPE: none
+}
+UL.errors LI {
+	MARGIN-BOTTOM: 5px
+}
+LABEL {
+	FONT-SIZE: 0.9em
+}
+.fieldLabel {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-WEIGHT: bold; PADDING-BOTTOM: 3px; MARGIN: 10px 0px 0px; COLOR: #948b6e; PADDING-TOP: 0px
+}
+UL#shareMsgs {
+	BORDER-RIGHT: #808080 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #808080 1px solid; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; OVERFLOW: hidden; BORDER-LEFT: #808080 1px solid; PADDING-TOP: 0px; BORDER-BOTTOM: #808080 1px solid; HEIGHT: 250px
+}
+UL#shareMsgs LI {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; PADDING-BOTTOM: 10px; LINE-HEIGHT: 15px; PADDING-TOP: 10px; BORDER-BOTTOM: #222222 1px dotted
+}
+UL#shareMsgs LI.current {
+	BACKGROUND-COLOR: #444444
+}
+UL#shareMsgs LI.current A {
+	COLOR: #206ba4! important
+}
+UL#shareMsgs LI IMG {
+	FLOAT: left; MARGIN: 0px 10px 0px 0px; WIDTH: 30px; HEIGHT: 30px
+}
+UL#shareMsgs LI.msgPad {
+	HEIGHT: 500px
+}
+UL#shareMsgs LI.a {
+	TEXT-DECORATION: none
+}
+.arrows {
+	TEXT-ALIGN: right
+}
+.arrows DIV {
+	DISPLAY: inline-block; FONT-WEIGHT: bold; FONT-SIZE: 2em; WIDTH: 22px; CURSOR: pointer; COLOR: #1a1a1a! important; BACKGROUND-REPEAT: no-repeat; HEIGHT: 21px; TEXT-DECORATION: none! important
+}
+#scrollup {
+	BACKGROUND-IMAGE: url(/images/side_arrow_up.gif)
+}
+#scrolldown {
+	BACKGROUND-IMAGE: url(/images/side_arrow_down.gif)
+}
